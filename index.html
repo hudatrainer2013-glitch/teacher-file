@@ -11,8 +11,9 @@
 <style>
 /* model ج (chosen 2026-10-29): the Canva «ملف انجاز معلمة باللون الأخضر والزهري» look — watercolor flowers, pink/green, Lalezar titles */
 :root{
-  --green:#2f5d2a; --green-2:#4f7d3f; --leaf:#e6f0dc; --pink:#e7779a; --pink-l:#fde9ef;
-  --lilac:#9b86d6; --lilac-l:#efeafb; --bg:#f7f8fd; --card:#fff; --ink:#2c3328; --muted:#6c7368; --line:#e8eae4;
+  /* palette tried 2026-10-29: #8ce2f3 · #47656b · #298fa3 · #e7fafe */
+  --green:#47656b; --green-2:#298fa3; --leaf:#d6f4fa; --pink:#8ce2f3; --pink-l:#f7fdfe;
+  --lilac:#298fa3; --lilac-l:#f3fcfe; --bg:#ffffff; --card:#fff; --ink:#2b3d40; --muted:#5f777b; --line:#e6f1f3;
 }
 *{box-sizing:border-box}
 body{margin:0;font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7}
@@ -23,26 +24,26 @@ header{background:#fff;border-bottom:1px solid var(--line)}
 header .wrap{display:flex;align-items:center;gap:12px;padding:14px 16px}
 header h1{font-size:28px;margin:0;line-height:1.2}
 header p{margin:0;color:var(--muted);font-size:14px}
-.hero{position:relative;overflow:hidden;margin:18px 0;border-radius:22px;padding:24px;min-height:150px;display:flex;align-items:center;background:linear-gradient(120deg,var(--pink-l),var(--lilac-l))}
+.hero{position:relative;overflow:hidden;margin:18px 0;border-radius:22px;border:1px solid var(--line);padding:24px;min-height:150px;display:flex;align-items:center;background:linear-gradient(120deg,var(--pink-l),var(--lilac-l))}
 .hero img{position:absolute;left:-20px;bottom:-60px;width:210px}
 .hero h2{font-size:34px;margin:0}
 .hero p{margin:4px 0 0;max-width:460px}
 .hero > div{position:relative;z-index:1}
 .g{font-family:Lalezar,sans-serif;color:var(--green);font-size:24px;margin:24px 0 10px;display:flex;align-items:center;gap:8px}
-.g::before{content:"";width:22px;height:22px;background:url(assets/bouquet.webp) center/contain no-repeat}
+.g::before{content:"";width:6px;height:22px;border-radius:4px;background:var(--green-2)}
 .tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
-.tile{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;color:var(--ink);border-top:5px solid var(--leaf);text-align:start;font:inherit;cursor:pointer;transition:transform .15s}
+.tile{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;color:var(--ink);border-top:5px solid var(--green-2);text-align:start;font:inherit;cursor:pointer;transition:transform .15s}
 .tile:hover{transform:translateY(-2px)}
 .tile.no{border-top-color:var(--pink)}
 .tile b{display:block;font-weight:600}
 .tile .n{font-size:22px;font-weight:700;color:var(--green)}
-.tile.no .n{color:var(--pink)}
+.tile.no .n{color:var(--muted)}
 .chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12.5px;font-weight:600}
 .c-ok{background:var(--leaf);color:var(--green)}
-.c-none{background:var(--pink-l);color:#b23a62}
+.c-none{background:#f1f4f5;color:#5f777b}
 .border-foot{height:150px;margin-top:20px;background:url(assets/border.webp) center bottom/auto 150px repeat-x}
 .empty{text-align:center;color:var(--muted);padding:40px}
-.btn{display:inline-block;border:0;border-radius:12px;padding:10px 18px;font:inherit;font-weight:600;background:var(--green);color:#fff;text-decoration:none;cursor:pointer}
+.btn{display:inline-block;border:0;border-radius:12px;padding:10px 18px;font:inherit;font-weight:600;background:var(--green-2);color:#fff;text-decoration:none;cursor:pointer}
 .btn.ghost{background:var(--leaf);color:var(--green)}
 .btn[aria-disabled=true]{opacity:.6;pointer-events:none}
 /* section sheet */
@@ -57,7 +58,7 @@ dialog::backdrop{background:rgba(44,51,40,.35)}
 .sh-b{padding:16px 22px 22px}
 .subs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
 .subs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 14px;font:inherit;cursor:pointer;color:var(--ink)}
-.subs button.on{background:var(--green);border-color:var(--green);color:#fff}
+.subs button.on{background:var(--green-2);border-color:var(--green-2);color:#fff}
 .files{list-style:none;margin:0 0 14px;padding:0}
 .files li{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px dashed var(--line)}
 .files .x{font-size:11px;font-weight:700;background:var(--lilac-l);color:var(--lilac);border-radius:6px;padding:2px 6px;min-width:42px;text-align:center}
@@ -70,18 +71,17 @@ dialog::backdrop{background:rgba(44,51,40,.35)}
 </style>
 </head>
 <body>
-<header><div class="wrap"><img src="assets/bouquet.webp" alt="" style="width:44px">
+<header><div class="wrap">
   <div><h1>سجل توثيق شواهد الأداء الوظيفي</h1><p>أ. هدى محمد المساعد · ابتدائية ومتوسطة الراشدية · مديرة المدرسة: أ. مها الهذيلي</p></div></div></header>
 <div class="wrap">
   <div class="hero">
-    <div><h2>مرحبًا أ. هدى</h2></div>
-    <img src="assets/bouquet.webp" alt=""></div>
+    <div><h2>مرحبًا أ. هدى</h2></div></div>
   <div id="secs"><div class="empty">جاري تحميل ملفاتك…</div></div>
 </div>
-<div class="border-foot"></div>
+<div style="height:40px"></div>
 
 <dialog id="sheet">
-  <div class="sh-h"><button class="sh-x" id="close" aria-label="إغلاق">✕</button><img src="assets/bouquet.webp" alt="">
+  <div class="sh-h"><button class="sh-x" id="close" aria-label="إغلاق">✕</button>
     <h2 id="shT"></h2><p id="shP"></p></div>
   <div class="sh-b" id="shB"></div>
 </dialog>
@@ -125,7 +125,7 @@ function render() {
   let i = 0;
   $('#secs').innerHTML = SECTIONS.map(s => `<div class="g">${s.g}</div><div class="tiles">${s.items.map(x => { const n = countOf(x), k = ALL.indexOf(x);
     return `<button class="tile${n ? '' : ' no'}" data-k="${k}"><b>${esc(x.t)}</b><span class="n">${AR(n)}</span> <small>ملف</small>
-      <div>${n ? '<span class="chip c-ok">مكتمل</span>' : '<span class="chip c-none">لم يُرفع</span>'}</div></button>`; }).join('')}</div>`).join('');
+      ${n ? '<div><span class="chip c-ok">مكتمل</span></div>' : ''}</button>`; }).join('')}</div>`).join('');
 }
 
 function openSheet(x, sub = 0) {
