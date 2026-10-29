@@ -1,3 +1,6 @@
 *
 !index.html
 !.gitignore
+!assets/
+!assets/bouquet.webp
+!assets/border.webp
