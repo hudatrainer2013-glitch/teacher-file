@@ -34,14 +34,15 @@ a{color:var(--link)}
 .cover .b{position:absolute;top:0;width:96px;border-radius:0 0 44px 44px}
 .cover .b1{right:36px;height:160px;background:var(--bblock)}
 .cover .b2{right:150px;height:180px;background:var(--yblock)}
-.cover h1{position:relative;font-size:clamp(32px,6.4vw,62px);line-height:1.12;color:var(--green);font-weight:800;max-width:520px}
+.cover .school{position:relative;margin:0 0 6px;color:var(--deep);font-size:clamp(16px,2.2vw,20px);font-weight:600}
+.cover h1{position:relative;font-size:clamp(28px,5vw,48px);line-height:1.12;color:var(--green);font-weight:800;max-width:640px}
 .cover .who{position:relative;margin:12px 0 0;color:var(--muted);font-size:14px;max-width:470px}
 .cover .pill{position:relative;display:flex;align-items:center;margin-top:20px;background:var(--blue);color:#fff;border-radius:999px;height:62px;padding:0 30px;font-family:"Noto Kufi Arabic",sans-serif;font-weight:700;font-size:20px;width:min(470px,100%)}
 .cover .art{position:absolute;left:84px;top:0;bottom:36px;width:min(33%,300px);border-radius:0 0 22px 22px;overflow:hidden;
   background:linear-gradient(118deg,#e2f3fb 0 46%,#fbf4ea 46% 100%)}
 .cover .art .lime{position:absolute;right:0;left:-30px;top:112px;height:66px;background:var(--lime)}
 .cover .art svg{position:absolute;inset:0;width:100%;height:100%}
-.cover .tag{position:absolute;left:18px;top:16px;width:52px;height:260px;border-radius:999px;background:var(--deep);color:#fff;display:flex;flex-direction:column;align-items:center;gap:12px;padding:8px 0}
+.cover .tag{position:absolute;left:18px;top:16px;width:52px;height:260px;border-radius:999px;background:var(--deep);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:8px 0}
 .cover .tag .face{width:40px;height:40px;border-radius:50%;background:#fff;color:var(--deep);display:grid;place-items:center}
 .cover .tag b{writing-mode:vertical-rl;font-weight:600;font-size:15px}
 .cover .tools{position:absolute;left:18px;top:290px;display:flex;flex-direction:column;gap:8px;z-index:2}
@@ -168,14 +169,15 @@ dialog::backdrop{background:rgba(207,230,219,.85)}
 <div id="app" class="page" hidden>
   <div class="cover">
     <i class="b b1"></i><i class="b b2"></i>
+    <p class="school">ابتدائية ومتوسطة الراشدية</p>
     <h1>سجل توثيق<br>شواهد الأداء الوظيفي</h1>
-    <p class="who">أ. هدى محمد المساعد · ابتدائية ومتوسطة الراشدية · مديرة المدرسة: أ. مها الهذيلي</p>
+    <p class="who">مديرة المدرسة: أ. مها الهذيلي</p>
     <div class="pill">مرحباً هدى محمد المساعد</div>
     <div class="art"><div class="lime"></div>
       <svg viewBox="0 0 300 380" preserveAspectRatio="none" fill="none" stroke="#146c2e" stroke-width="2.5" stroke-linecap="round">
         <path d="M296 104 L8 98 L4 120 L-2 210 L240 214"/>
         <path d="M120 300c-24-8-40 14-34 36 8 26 46 28 60 6 12-20 2-40-26-42"/></svg></div>
-    <div class="tag"><span class="face"><span class="ms">android</span></span><b>@هدى_المساعد</b></div>
+    <div class="tag"><b>@هدى_المساعد</b></div>
     <div class="tools">
       <button class="ib" id="sync" title="تحديث من Drive" aria-label="تحديث من Drive"><span class="ms">sync</span></button>
       <button class="ib" id="out" title="خروج" aria-label="خروج"><span class="ms">logout</span></button></div>
