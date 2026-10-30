@@ -7,90 +7,202 @@
 <title>سجل توثيق شواهد الأداء الوظيفي</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@500;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0..1,0&display=block" rel="stylesheet">
 <style>
-/* model ج (chosen 2026-10-29): the Canva «ملف انجاز معلمة باللون الأخضر والزهري» look — watercolor flowers, pink/green, Lalezar titles */
+/* the Figma «Android UI Kit» pages she sent (Introduction.png + Device frames.png), copied as she asked 2026-10-30:
+   full-width grid cover (pastel blocks, big green title, blue pill, lime bar card, @ tag), rows of text + illustration,
+   folder sheet drawn as an Android phone frame. Earlier looks: index-m3-style.html, index-canva-style.html. */
 :root{
-  /* palette tried 2026-10-29: #8ce2f3 · #47656b · #298fa3 · #e7fafe */
-  --green:#47656b; --green-2:#298fa3; --leaf:#d6f4fa; --pink:#8ce2f3; --pink-l:#f7fdfe;
-  --lilac:#298fa3; --lilac-l:#f3fcfe; --bg:#ffffff; --card:#fff; --ink:#2b3d40; --muted:#5f777b; --line:#e6f1f3;
+  --page:#f3faf6; --cover:#d2e9de; --card:#e8f3ed; --line:#d5e6dd;
+  --green:#146c2e; --deep:#1f5f4f; --ink:#1b1f1d; --muted:#46514c; --link:#0b6b4f;
+  --blue:#4285f4; --bblock:#aecbfa; --yblock:#f0fbc4; --lime:#c6ff00; --lav:#a8a3f5; --orange:#ff8a1f; --sand:#fde49a; --peri:#7f9cf5;
+  --frame:#a7b3ae;
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7}
-h1,h2,h3{font-family:"Lalezar","IBM Plex Sans Arabic",sans-serif;font-weight:400;color:var(--green);letter-spacing:0}
-a{color:var(--green-2)}
-.wrap{max-width:1100px;margin:auto;padding:0 16px}
-header{background:#fff;border-bottom:1px solid var(--line)}
-header .wrap{display:flex;align-items:center;gap:12px;padding:14px 16px}
-header h1{font-size:28px;margin:0;line-height:1.2}
-header p{margin:0;color:var(--muted);font-size:14px}
-.hero{position:relative;overflow:hidden;margin:18px 0;border-radius:22px;border:1px solid var(--line);padding:24px;min-height:150px;display:flex;align-items:center;background:linear-gradient(120deg,var(--pink-l),var(--lilac-l))}
-.hero img{position:absolute;left:-20px;bottom:-60px;width:210px}
-.hero h2{font-size:34px;margin:0}
-.hero p{margin:4px 0 0;max-width:460px}
-.hero > div{position:relative;z-index:1}
-.g{font-family:Lalezar,sans-serif;color:var(--green);font-size:24px;margin:24px 0 10px;display:flex;align-items:center;gap:8px}
-.g::before{content:"";width:6px;height:22px;border-radius:4px;background:var(--green-2)}
-.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
-.tile{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;color:var(--ink);border-top:5px solid var(--green-2);text-align:start;font:inherit;cursor:pointer;transition:transform .15s}
-.tile:hover{transform:translateY(-2px)}
-.tile.no{border-top-color:var(--pink)}
-.tile b{display:block;font-weight:600}
-.tile .n{font-size:22px;font-weight:700;color:var(--green)}
-.tile.no .n{color:var(--muted)}
-.chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12.5px;font-weight:600}
-.c-ok{background:var(--leaf);color:var(--green)}
-.c-none{background:#f1f4f5;color:#5f777b}
-.border-foot{height:150px;margin-top:20px;background:url(assets/border.webp) center bottom/auto 150px repeat-x}
+body{margin:0;font-family:"Noto Sans Arabic",system-ui,sans-serif;background:var(--page);color:var(--ink);line-height:1.6;font-size:15px}
+h1,h2,h3{font-family:"Noto Kufi Arabic","Noto Sans Arabic",sans-serif;margin:0;letter-spacing:0}
+a{color:var(--link)}
+.ms{font-family:"Material Symbols Rounded";font-weight:normal;font-style:normal;font-size:24px;line-height:1;display:inline-block;direction:ltr;font-feature-settings:"liga";user-select:none}
+[hidden]{display:none!important}
+.page{max-width:1000px;margin:auto;background:var(--page);min-height:100vh}
+/* cover */
+.cover{position:relative;overflow:hidden;min-height:420px;padding:170px 40px 40px;
+  background-color:var(--cover);
+  background-image:linear-gradient(rgba(255,255,255,.45) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.45) 1px,transparent 1px);
+  background-size:26px 26px}
+.cover .b{position:absolute;top:0;width:96px;border-radius:0 0 44px 44px}
+.cover .b1{right:36px;height:160px;background:var(--bblock)}
+.cover .b2{right:150px;height:180px;background:var(--yblock)}
+.cover h1{position:relative;font-size:clamp(32px,6.4vw,62px);line-height:1.12;color:var(--green);font-weight:800;max-width:520px}
+.cover .who{position:relative;margin:12px 0 0;color:var(--muted);font-size:14px;max-width:470px}
+.cover .pill{position:relative;display:flex;align-items:center;margin-top:20px;background:var(--blue);color:#fff;border-radius:999px;height:62px;padding:0 30px;font-family:"Noto Kufi Arabic",sans-serif;font-weight:700;font-size:20px;width:min(470px,100%)}
+.cover .art{position:absolute;left:84px;top:0;bottom:36px;width:min(33%,300px);border-radius:0 0 22px 22px;overflow:hidden;
+  background:linear-gradient(118deg,#e2f3fb 0 46%,#fbf4ea 46% 100%)}
+.cover .art .lime{position:absolute;right:0;left:-30px;top:112px;height:66px;background:var(--lime)}
+.cover .art svg{position:absolute;inset:0;width:100%;height:100%}
+.cover .tag{position:absolute;left:18px;top:16px;width:52px;height:260px;border-radius:999px;background:var(--deep);color:#fff;display:flex;flex-direction:column;align-items:center;gap:12px;padding:8px 0}
+.cover .tag .face{width:40px;height:40px;border-radius:50%;background:#fff;color:var(--deep);display:grid;place-items:center}
+.cover .tag b{writing-mode:vertical-rl;font-weight:600;font-size:15px}
+.cover .tools{position:absolute;left:18px;top:290px;display:flex;flex-direction:column;gap:8px;z-index:2}
+.ib{width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:var(--deep);cursor:pointer;display:grid;place-items:center;box-shadow:0 2px 6px rgba(31,95,79,.18)}
+.ib:hover{background:var(--card)}
+.ib:disabled{opacity:.5;cursor:default}
+.ib.spin .ms{animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(-360deg)}}
+/* rows */
+#secs{padding:24px 32px 8px}
+.row{display:grid;grid-template-columns:minmax(220px,1fr) 1.45fr;gap:22px;align-items:center;padding:22px 18px;margin-top:8px}
+.row.r2,.row.r3{background:var(--card);border-radius:30px;padding:24px;margin-top:22px}
+.row .txt h2{font-size:27px;font-weight:700;color:var(--ink);margin:0 0 10px}
+.row .txt p{margin:0 0 10px;color:var(--ink);font-size:14.5px}
+.row .txt .lnk{color:var(--link);font-size:14px}
+.sep{height:1px;background:var(--line);margin:18px 0 0}
+.art2{position:relative;overflow:hidden;border-radius:16px;padding:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;align-content:center;min-height:200px}
+.art2 > i{position:absolute;pointer-events:none}
+/* r0 = «Guidance»: pale lime, lavender + orange + sand shapes */
+.r0 .art2{background:#effcd6}
+.r0 .s1{width:130px;height:110px;left:-10px;top:-14px;background:var(--lav);border-radius:40% 60% 55% 45%/55% 45% 55% 45%}
+.r0 .s2{width:120px;height:110px;left:30px;bottom:-30px;background:var(--orange);clip-path:polygon(50% 0,63% 12%,80% 8%,85% 26%,100% 38%,92% 55%,100% 72%,82% 82%,74% 100%,55% 92%,38% 100%,26% 84%,6% 80%,10% 60%,0 44%,14% 30%,14% 12%,32% 12%)}
+.r0 .s3{width:110px;height:100px;right:38%;bottom:-24px;background:var(--sand);border-radius:22px;transform:rotate(18deg)}
+.r0 .s4{width:60px;height:110px;right:-24px;top:-30px;background:#ffd8c2;border-radius:50%}
+/* r1 = «Feedback»: grey-mint with the big periwinkle «HEY» card */
+.r1 .art2{background:#c9ddd2}
+.r1 .s1{inset:22px 12% 18px 8%;background:var(--peri);border-radius:26px;transform:rotate(-7deg)}
+.r1 .s2{width:40px;height:40px;left:20px;bottom:10px;border:8px solid #fff;border-radius:50%;opacity:.8}
+.r1 .s3{width:44px;height:44px;left:6%;top:18px;background:#b7e04b;border-radius:50%}
+.r1 .s4{width:40px;height:40px;right:20px;bottom:22px;background:#a5452a;clip-path:polygon(50% 0,80% 10%,100% 40%,90% 80%,55% 100%,15% 90%,0 55%,15% 15%)}
+/* r2 = «Grids and insets»: dark frame, two phones with column grid */
+/* one background (her pick 2026-10-30): the kit's four teal layout columns on white */
+.r2 .art2{background:#fff linear-gradient(90deg,transparent 0 3%,#daedeb 3% 84%,transparent 84%) 0 0/25% 100% repeat-x}
+/* r3 = «Android units»: white dotted board */
+.r3 .art2{background:#fff radial-gradient(#cfe3d9 1.2px,transparent 1.3px) 0 0/16px 16px}
+/* dots only (her pick 2026-10-30): no red line, no green bar */
+/* folder cards on top of the illustrations */
+.tile{position:relative;z-index:1;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.94);border:0;border-radius:14px;padding:10px 12px;min-height:58px;color:var(--ink);text-align:start;font:inherit;cursor:pointer;box-shadow:0 1px 3px rgba(20,60,45,.18);transition:transform .15s,box-shadow .15s}
+.tile:hover{transform:translateY(-2px);box-shadow:0 8px 16px rgba(20,60,45,.2)}
+.tile .av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--card);color:var(--green);flex:none}
+.tile .av .ms{font-size:19px}
+.tile:not(.no) .av{background:var(--green);color:#fff}
+.tile .tx{flex:1;min-width:0}
+.tile b{display:block;font-weight:600;font-size:14px;line-height:1.35}
+.tile small{color:var(--muted);font-size:12px}
+.tile .ok{color:var(--green);font-size:20px;font-variation-settings:"FILL" 1}
 .empty{text-align:center;color:var(--muted);padding:40px}
-.btn{display:inline-block;border:0;border-radius:12px;padding:10px 18px;font:inherit;font-weight:600;background:var(--green-2);color:#fff;text-decoration:none;cursor:pointer}
-.btn.ghost{background:var(--leaf);color:var(--green)}
+.foot{padding:26px 32px 40px;color:var(--muted);font-size:13px}
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;height:42px;border:0;border-radius:999px;padding:0 22px;font:inherit;font-size:14px;font-weight:600;background:var(--blue);color:#fff;text-decoration:none;cursor:pointer}
+.btn.ghost{background:var(--card);color:var(--link)}
 .btn[aria-disabled=true]{opacity:.6;pointer-events:none}
-/* section sheet */
-dialog{border:0;border-radius:22px;padding:0;width:min(640px,calc(100% - 24px));max-height:calc(100% - 40px);box-shadow:0 20px 60px rgba(47,93,42,.25)}
-dialog::backdrop{background:rgba(44,51,40,.35)}
-.sh-h{position:relative;overflow:hidden;padding:20px 22px;background:linear-gradient(120deg,var(--pink-l),var(--lilac-l))}
-.sh-h h2{margin:0;font-size:30px}
-.sh-h img{position:absolute;left:-10px;top:-20px;width:110px;opacity:.9}
-.sh-x{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;border:0;background:#fff;color:var(--green);font-size:18px;cursor:pointer;z-index:1}
-.sh-h h2,.sh-h p{position:relative;z-index:1;margin-inline-start:40px}
-.sh-h p{margin-top:0;color:var(--muted)}
-.sh-b{padding:16px 22px 22px}
+#upBtn::after{content:"upload";font-family:"Material Symbols Rounded";font-size:18px;order:-1;font-feature-settings:"liga"}
+/* folder sheet = an Android phone frame (Device frames.png): grey bezel, status bar 9:30 · camera dot · icons, gesture bar */
+dialog{border:7px solid var(--frame);border-radius:36px;padding:0;width:min(440px,calc(100% - 24px));height:min(820px,calc(100% - 32px));max-height:none;background:#f3f8f6;color:var(--ink);box-shadow:0 30px 60px rgba(20,60,45,.3);overflow:hidden}
+dialog[open]{display:flex;flex-direction:column}
+dialog::backdrop{background:rgba(207,230,219,.85)}
+.sbar{display:flex;align-items:center;justify-content:space-between;direction:ltr;padding:12px 22px 4px;font-size:13px;font-family:Roboto,system-ui,sans-serif}
+.sbar .cam{width:16px;height:16px;border-radius:50%;background:#2b2b2b}
+.sbar .ic{display:flex;gap:2px}
+.sbar .ic .ms{font-size:15px;font-variation-settings:"FILL" 1}
+.sh-h{position:relative;padding:10px 20px 12px 60px}
+.sh-h h2{font-size:24px;font-weight:700;color:var(--ink)}
+.sh-h p{margin:2px 0 0;color:var(--muted);font-size:14px}
+.sh-x{position:absolute;top:6px;left:12px;width:40px;height:40px;border-radius:50%;border:0;background:var(--card);color:var(--deep);cursor:pointer;display:grid;place-items:center}
+.sh-x:focus:not(:focus-visible){outline:0}
+.sh-b{flex:1;overflow:auto;padding:4px 20px 16px}
+.gbar{height:5px;width:110px;border-radius:3px;background:#1b1f1d;margin:6px auto 10px;flex:none}
 .subs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
-.subs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 14px;font:inherit;cursor:pointer;color:var(--ink)}
-.subs button.on{background:var(--green-2);border-color:var(--green-2);color:#fff}
-.files{list-style:none;margin:0 0 14px;padding:0}
-.files li{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px dashed var(--line)}
-.files .x{font-size:11px;font-weight:700;background:var(--lilac-l);color:var(--lilac);border-radius:6px;padding:2px 6px;min-width:42px;text-align:center}
+.subs button{height:34px;border:1px solid var(--line);background:#fff;border-radius:10px;padding:0 12px;font:inherit;font-size:13.5px;font-weight:500;cursor:pointer;color:var(--ink)}
+.subs button.on{background:var(--yblock);border-color:#d9e98a;color:var(--ink)}
+.files{list-style:none;margin:0 0 14px;padding:0;background:#fff;border-radius:18px;overflow:hidden}
+.files li{display:flex;align-items:center;gap:12px;padding:10px 14px;min-height:58px}
+.files li + li{border-top:1px solid var(--line)}
+.files .x{font-size:11px;font-weight:700;background:var(--lime);color:#2c3a00;border-radius:10px;min-width:44px;height:30px;display:grid;place-items:center;flex:none}
 .files a{flex:1;text-decoration:none;color:var(--ink);word-break:break-word}
-.files a:hover{color:var(--green)}
+.files a:hover{color:var(--link)}
 .files .d{color:var(--muted);font-size:12.5px;white-space:nowrap}
 .acts{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.acts .muted{color:var(--muted);font-size:13px}
-.credit{text-align:center;color:var(--muted);font-size:13px;margin-top:-30px;position:relative}
+.acts .muted{color:var(--muted);font-size:12.5px}
+@media (max-width:720px){
+  .cover{padding:150px 20px 40px;min-height:0}
+  .cover .art{display:none}
+  .cover .tools{left:72px;top:16px;flex-direction:row}
+  .cover .tag{height:200px;width:44px}
+  .cover .tag .face{width:34px;height:34px}
+  #secs{padding:20px 14px 0}
+  .row{grid-template-columns:1fr;padding:16px 6px}
+  .row.r2,.row.r3{padding:18px}
+  dialog{width:100%;height:100%;border-radius:0;border:0}
+}
+/* login: phone only (Supabase Auth), drawn as the cover + a phone frame */
+#login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px;
+  background-color:var(--cover);background-image:linear-gradient(rgba(255,255,255,.45) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.45) 1px,transparent 1px);background-size:26px 26px}
+#login form{position:relative;overflow:hidden;width:min(380px,100%);background:#f3f8f6;border:7px solid var(--frame);border-radius:36px;padding:0 0 10px}
+#login .cv{position:relative;overflow:hidden;padding:110px 24px 18px}
+#login .cv::before{content:"";position:absolute;right:22px;top:0;width:66px;height:96px;background:var(--bblock);border-radius:0 0 34px 34px}
+#login .cv::after{content:"";position:absolute;right:98px;top:0;width:66px;height:80px;background:var(--yblock);border-radius:0 0 34px 34px}
+#login h1{position:relative;font-size:28px;line-height:1.2;color:var(--green);font-weight:800}
+#login p{position:relative;margin:8px 0 0;color:var(--muted);font-size:14px}
+#login .in{padding:6px 24px 10px}
+#login label{display:block;font-weight:600;font-size:14px;margin-bottom:8px}
+#login input{width:100%;height:52px;border:1px solid var(--frame);border-radius:14px;background:#fff;padding:0 16px;font:inherit;font-size:18px;direction:ltr;text-align:right}
+#login input:focus{outline:2px solid var(--blue);border-color:transparent}
+#login .btn{width:100%;justify-content:center;margin-top:16px;height:54px;font-size:17px}
+#lerr{color:#b3261e;font-size:13.5px;min-height:20px;margin-top:8px;text-align:center}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 </head>
 <body>
-<header><div class="wrap">
-  <div><h1>سجل توثيق شواهد الأداء الوظيفي</h1><p>أ. هدى محمد المساعد · ابتدائية ومتوسطة الراشدية · مديرة المدرسة: أ. مها الهذيلي</p></div></div></header>
-<div class="wrap">
-  <div class="hero">
-    <div><h2>مرحبًا أ. هدى</h2></div>
-    <img src="assets/bouquet.webp" alt=""></div>
+<section id="login" hidden>
+  <form id="lform" autocomplete="on">
+    <div class="sbar"><span>٩:٣٠</span><span class="cam"></span><span class="ic"><span class="ms">wifi</span><span class="ms">signal_cellular_alt</span><span class="ms">battery_full</span></span></div>
+    <div class="cv"><h1>سجل توثيق<br>شواهد الأداء الوظيفي</h1><p>صفحة خاصة، ادخلي برقم جوالك</p></div>
+    <div class="in">
+      <label for="phone">رقم الجوال</label>
+      <input id="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="05xxxxxxxx" required>
+      <button class="btn" id="lbtn">دخول</button>
+      <div id="lerr"></div>
+    </div>
+    <div class="gbar"></div>
+  </form>
+</section>
+<div id="app" class="page" hidden>
+  <div class="cover">
+    <i class="b b1"></i><i class="b b2"></i>
+    <h1>سجل توثيق<br>شواهد الأداء الوظيفي</h1>
+    <p class="who">أ. هدى محمد المساعد · ابتدائية ومتوسطة الراشدية · مديرة المدرسة: أ. مها الهذيلي</p>
+    <div class="pill">مرحباً هدى محمد المساعد</div>
+    <div class="art"><div class="lime"></div>
+      <svg viewBox="0 0 300 380" preserveAspectRatio="none" fill="none" stroke="#146c2e" stroke-width="2.5" stroke-linecap="round">
+        <path d="M296 104 L8 98 L4 120 L-2 210 L240 214"/>
+        <path d="M120 300c-24-8-40 14-34 36 8 26 46 28 60 6 12-20 2-40-26-42"/></svg></div>
+    <div class="tag"><span class="face"><span class="ms">android</span></span><b>@هدى_المساعد</b></div>
+    <div class="tools">
+      <button class="ib" id="sync" title="تحديث من Drive" aria-label="تحديث من Drive"><span class="ms">sync</span></button>
+      <button class="ib" id="out" title="خروج" aria-label="خروج"><span class="ms">logout</span></button></div>
+  </div>
   <div id="secs"><div class="empty">جاري تحميل ملفاتك…</div></div>
+  <div class="foot">إعداد وتصميم: هدى محمد المساعد</div>
 </div>
-<div class="border-foot"></div>
 
 <dialog id="sheet">
-  <div class="sh-h"><button class="sh-x" id="close" aria-label="إغلاق">✕</button>
+  <div class="sbar"><span id="sbT">٩:٣٠</span><span class="cam"></span><span class="ic"><span class="ms">wifi</span><span class="ms">signal_cellular_alt</span><span class="ms">battery_full</span></span></div>
+  <div class="sh-h"><button class="sh-x" id="close" aria-label="إغلاق"><span class="ms">close</span></button>
     <h2 id="shT"></h2><p id="shP"></p></div>
   <div class="sh-b" id="shB"></div>
+  <div class="gbar"></div>
 </dialog>
 
 <script>
 'use strict';
-// هدى's Apps Script: ?app=tf lists «سجل إنجاز هدى لعام 1448هـ» folder by folder (key = 'section' or 'section/sub'); action tfupload saves into one key
+// هدى's Apps Script: ?app=tf lists «سجل إنجاز هدى لعام 1448هـ» folder by folder (key = 'section' or 'section/sub'); action tfupload saves into one key.
+// Reading Drive takes ~20 s, so the page reads the list from Supabase (tf_files / tf_folders, signed-in only) and only asks Drive on «تحديث من Drive».
 const API = 'https://script.google.com/macros/s/AKfycbyWdWYwYhVpipy0uAl_FZMxUpcZZ2MFHvYM7TJMitINz8zY9NxeiOwQAN98V8i9rOkPPw/exec';
+const sb = supabase.createClient('https://mhdaitapwnrwbnsjzgtb.supabase.co', 'sb_publishable_bhlW8RvmgRDYu7a9SryzrA_V8MwbVtt');
+// an Arabic keyboard types ٠-٩ (or ۰-۹), the account uses 0-9
+const LATIN = s => s.replace(/[٠-٩]/g, d => d.charCodeAt(0) - 0x660).replace(/[۰-۹]/g, d => d.charCodeAt(0) - 0x6F0).trim();
+const DIGITS = phone => LATIN(phone).replace(/\D/g, '');
+// login is by phone only (her choice 2026-10-30): the account password is derived from the number
+const EMAIL = phone => DIGITS(phone) + '@teacher-file.app', PASS = phone => DIGITS(phone) + '-tf1448';
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const AR = n => String(n).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
@@ -98,12 +210,12 @@ const hIso = t => { const P = new Intl.DateTimeFormat('en-u-ca-islamic-umalqura-
 
 const GRADES = ['أول متوسط', 'ثاني متوسط', 'ثالث متوسط'];
 const SECTIONS = [
-  { g: 'التعريف بالمعلمة', items: ['السيرة الذاتية', 'الرؤية والرسالة والقيم', 'أهداف المعلمة', 'أهداف سياسة التعليم', 'ميثاق أخلاقيات المهنة'] },
-  { g: 'التطوير والتميّز', items: ['الدورات التدريبية', 'المؤتمرات والملتقيات', 'العضويات العلمية', 'الجوائز والإنجازات', 'شهادات الشكر والتقدير'] },
-  { g: 'مجلدات السجل', items: ['توزيع المنهج', 'الخطة الفصلية', { t: 'الخطة الأسبوعية', subs: GRADES }, { t: 'الخطة العلاجية', subs: [...GRADES, 'خطة العلاج للطالبات'] },
+  { g: 'التعريف بالمعلمة', ic: 'person', d: 'السيرة الذاتية والرؤية والأهداف ومواثيق المهنة.', items: ['السيرة الذاتية', 'الرؤية والرسالة والقيم', 'أهداف المعلمة', 'أهداف سياسة التعليم', 'ميثاق أخلاقيات المهنة'] },
+  { g: 'التطوير والتميّز', ic: 'workspace_premium', d: 'الدورات والمؤتمرات والعضويات والجوائز وشهادات الشكر.', items: ['الدورات التدريبية', 'المؤتمرات والملتقيات', 'العضويات العلمية', 'الجوائز والإنجازات', 'شهادات الشكر والتقدير'] },
+  { g: 'مجلدات السجل', ic: 'folder', d: 'الخطط والبرامج والمبادرات والمجتمع المهني والإنتاج المعرفي.', items: ['توزيع المنهج', 'الخطة الفصلية', { t: 'الخطة الأسبوعية', subs: GRADES }, { t: 'الخطة العلاجية', subs: [...GRADES, 'خطة العلاج للطالبات'] },
     'الخطة الإثرائية', 'انماط التعلم', 'البرامج', 'المبادرات',
     { t: 'المجتمع المهني', subs: ['الحلقات التنشيطية', 'الدورات', 'دروس تطبيقية', 'زيارات تبادلية', 'ورش العمل'] }, { t: 'الإنتاج المعرفي', subs: ['دروس'] }] },
-  { g: 'الملفات الختامية', items: ['التقويم الذاتي', 'نماذج من أوراق العمل', 'نماذج من الاختبارات', 'مشاركات المعلمة', 'الملاحق'] }
+  { g: 'الملفات الختامية', ic: 'task', d: 'التقويم الذاتي ونماذج الأعمال والاختبارات والملاحق.', items: ['التقويم الذاتي', 'نماذج من أوراق العمل', 'نماذج من الاختبارات', 'مشاركات المعلمة', 'الملاحق'] }
 ].map(s => ({ ...s, items: s.items.map(x => typeof x === 'string' ? { t: x, subs: null } : x) }));
 const ALL = SECTIONS.flatMap(s => s.items);
 const keysOf = x => x.subs ? x.subs.map(s => x.t + '/' + s) : [x.t];
@@ -114,25 +226,47 @@ const countOf = x => keysOf(x).reduce((a, k) => a + filesOf(k).length, 0);
 
 async function load() {
   try {
-    const r = await (await fetch(API + '?app=tf&t=' + Date.now())).json();
-    if (!r.ok) throw new Error(r.error);
-    INFO = r.folders;
+    const [f, d] = await Promise.all([sb.from('tf_files').select('key,name,ext,url,created'), sb.from('tf_folders').select('key,url')]);
+    if (f.error || d.error) throw f.error || d.error;
+    INFO = {};
+    d.data.forEach(r => INFO[r.key] = { url: r.url, files: [] });
+    f.data.forEach(r => (INFO[r.key] = INFO[r.key] || { files: [] }).files.push({ n: r.name, x: r.ext, u: r.url, t: Date.parse(r.created) }));
   } catch (e) { $('#secs').innerHTML = '<div class="empty">تعذّر تحميل الملفات، تأكدي من الاتصال ثم حدّثي الصفحة</div>'; return; }
   render();
   if (cur) openSheet(cur, curSub);
 }
 
+// Drive → Supabase: adds files put straight into Drive, drops ones deleted there
+async function syncDrive() {
+  const b = $('#sync'); b.disabled = true; b.classList.add('spin');
+  try {
+    const r = await (await fetch(API + '?app=tf&t=' + Date.now())).json();
+    if (!r.ok) throw new Error(r.error);
+    const rows = Object.entries(r.folders).flatMap(([key, v]) => v.files.map(x => ({ key, name: x.n, ext: x.x, url: x.u, created: new Date(x.t).toISOString() })));
+    const seen = new Set(rows.map(x => x.url)), gone = Object.values(INFO).flatMap(v => v.files).map(x => x.u).filter(u => !seen.has(u));
+    const ops = [sb.from('tf_folders').upsert(Object.entries(r.folders).map(([key, v]) => ({ key, url: v.url })))];
+    if (rows.length) ops.push(sb.from('tf_files').upsert(rows, { onConflict: 'url' }));
+    if (gone.length) ops.push(sb.from('tf_files').delete().in('url', gone));
+    for (const res of await Promise.all(ops)) if (res.error) throw res.error;
+  } catch (e) { alert('ما تم التحديث من Drive، حاولي مرة ثانية. ' + (e.message || '')); }
+  b.disabled = false; b.classList.remove('spin');
+  await load();
+}
+
+// each group = one kit row: title + text, then a coloured «illustration» holding the folder cards
 function render() {
-  let i = 0;
-  $('#secs').innerHTML = SECTIONS.map(s => `<div class="g">${s.g}</div><div class="tiles">${s.items.map(x => { const n = countOf(x), k = ALL.indexOf(x);
-    return `<button class="tile${n ? '' : ' no'}" data-k="${k}"><b>${esc(x.t)}</b><span class="n">${AR(n)}</span> <small>ملف</small>
-      ${n ? '<div><span class="chip c-ok">مكتمل</span></div>' : ''}</button>`; }).join('')}</div>`).join('');
+  $('#secs').innerHTML = SECTIONS.map((s, i) => `${i === 2 ? '<div class="sep"></div>' : ''}<section class="row r${i}">
+    <div class="txt"><h2>${s.g}</h2><p>${s.d}</p><span class="lnk">${AR(s.items.filter(countOf).length)} من ${AR(s.items.length)} فيها ملفات</span></div>
+    <div class="art2"><i class="s1"></i><i class="s2"></i><i class="s3"></i><i class="s4"></i>${s.items.map(x => { const n = countOf(x), k = ALL.indexOf(x);
+      return `<button class="tile${n ? '' : ' no'}" data-k="${k}"><span class="av"><span class="ms">${s.ic}</span></span><span class="tx"><b>${esc(x.t)}</b><small>${AR(n)} ملف</small></span>${n ? '<span class="ms ok" title="مكتمل">check_circle</span>' : ''}</button>`; }).join('')}</div>
+  </section>`).join('');
 }
 
 function openSheet(x, sub = 0) {
   cur = x; curSub = sub;
   const key = keysOf(x)[sub], files = [...filesOf(key)].sort((a, b) => b.t - a.t), url = (INFO[key] || {}).url;
   $('#shT').textContent = x.t;
+  $('#sbT').textContent = AR(new Date().toLocaleTimeString('en-GB', { hour: 'numeric', minute: '2-digit', hour12: true }).replace(/\s*[ap]m/i, ''));
   $('#shP').textContent = `${AR(countOf(x))} ملف`;
   $('#shB').innerHTML = `${x.subs ? `<div class="subs">${x.subs.map((s, i) => `<button data-sub="${i}" class="${i === sub ? 'on' : ''}">${esc(s)} (${AR(filesOf(x.t + '/' + s).length)})</button>`).join('')}</div>` : ''}
     ${files.length ? `<ul class="files">${files.map(f => `<li><span class="x">${esc(f.x || '—')}</span><a href="${esc(f.u)}" target="_blank" rel="noopener">${esc(f.n)}</a><span class="d">${hIso(f.t)}</span></li>`).join('')}</ul>`
@@ -149,8 +283,12 @@ async function upload(list) {
   const btn = $('#upBtn'); btn.setAttribute('aria-disabled', 'true'); btn.firstChild.textContent = 'جاري الرفع… ';
   try {
     const files = await Promise.all([...list].map(async f => ({ name: f.name, type: f.type, data: await b64(f) })));
-    const r = await (await fetch(API, { method: 'POST', body: JSON.stringify({ action: 'tfupload', key: keysOf(cur)[curSub], files }) })).json();
+    const key = keysOf(cur)[curSub];
+    const r = await (await fetch(API, { method: 'POST', body: JSON.stringify({ action: 'tfupload', key, files }) })).json();
     if (!r.ok) throw new Error(r.error);
+    const ins = await sb.from('tf_files').upsert(r.saved.map(s => { const dot = s.n.lastIndexOf('.');
+      return { key, name: s.n, ext: dot > 0 ? s.n.slice(dot + 1).toUpperCase() : '', url: s.u }; }), { onConflict: 'url' });
+    if (ins.error) throw ins.error;
   } catch (e) { alert('ما تم الرفع، حاولي مرة ثانية. ' + e.message); }
   await load();
 }
@@ -163,7 +301,22 @@ document.addEventListener('change', e => { if (e.target.id === 'upIn' && e.targe
 $('#close').onclick = () => { $('#sheet').close(); };
 $('#sheet').addEventListener('close', () => { cur = null; });
 $('#sheet').addEventListener('click', e => { if (e.target === $('#sheet')) $('#sheet').close(); });
-load();
+$('#sync').onclick = syncDrive;
+
+function show(signedIn) {
+  $('#login').hidden = signedIn; $('#app').hidden = !signedIn;
+  if (signedIn) load();
+}
+$('#lform').onsubmit = async e => {
+  e.preventDefault();
+  $('#lbtn').disabled = true; $('#lerr').textContent = '';
+  const { error } = await sb.auth.signInWithPassword({ email: EMAIL($('#phone').value), password: PASS($('#phone').value) });
+  $('#lbtn').disabled = false;
+  if (error) { $('#lerr').textContent = 'رقم الجوال غير مسجّل'; return; }
+  show(true);
+};
+$('#out').onclick = async () => { await sb.auth.signOut(); show(false); };
+sb.auth.getSession().then(({ data }) => show(!!data.session));
 </script>
 </body>
 </html>
